@@ -1,0 +1,8 @@
+{
+  "name": "DS Mail",
+  "short_name": "DS Mail",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f2f2f7",
+  "theme_color": "#f2f2f7"
+}

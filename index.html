@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="DS Mail">
+  <meta name="theme-color" content="#f2f2f7">
+  <title>DS Mail</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>DS Mail</h1>
+    <p class="subtitle">入力内容はこの端末のブラウザに保存されます</p>
+  </header>
+
+  <main class="sheet">
+    <label for="to">Email Address</label>
+    <div class="field-row">
+      <input id="to" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false">
+      <select id="to-history" aria-label="Email history"></select>
+    </div>
+
+    <label for="sender">Sender</label>
+    <div class="field-row">
+      <input id="sender" type="text" autocomplete="name">
+      <select id="sender-history" aria-label="Sender history"></select>
+    </div>
+
+    <label for="date">Date</label>
+    <div class="field-row">
+      <input id="date" type="text" readonly>
+      <input id="date-picker" type="date" aria-label="Pick date">
+      <button id="today" type="button" class="secondary">Today</button>
+    </div>
+
+    <label for="destination">Destination</label>
+    <div class="field-row">
+      <input id="destination" type="text" autocomplete="off">
+      <select id="destination-history" aria-label="Destination history"></select>
+    </div>
+
+    <p class="section-label">Subject</p>
+    <p id="subject" class="subject"></p>
+
+    <label for="body">Body</label>
+    <textarea id="body" rows="6"></textarea>
+
+    <div class="segment" role="tablist">
+      <button id="morning" type="button" class="active">Morning</button>
+      <button id="checkout" type="button">Check out</button>
+    </div>
+
+    <button id="send" type="button" class="primary">Send E-mail</button>
+    <button id="send-outlook" type="button" class="secondary">Outlook で開く</button>
+    <button id="manage" type="button" class="secondary">Manage History</button>
+    <p id="status" class="status" role="status"></p>
+  </main>
+
+  <section id="history-panel" class="history hidden">
+    <div class="history-head">
+      <h2>History</h2>
+      <button id="close-history" type="button" class="secondary">閉じる</button>
+    </div>
+    <div id="history-lists"></div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
