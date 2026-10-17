@@ -161,7 +161,7 @@ function composeURLs(to, mailSubject, body) {
   ];
 }
 
-function sendMail(preferOutlook) {
+function sendMail() {
   rememberFields();
   persist();
   const message = validationMessage();
@@ -172,7 +172,7 @@ function sendMail(preferOutlook) {
   els.status.textContent = "";
   const body = applyingCheckout(checkoutOn, els.body.value);
   const urls = composeURLs(els.to.value.trim(), subject(), body);
-  window.location.href = preferOutlook ? urls[0] : urls[1];
+  window.location.href = urls[1];
 }
 
 function renderHistory() {
@@ -266,8 +266,7 @@ els.datePicker.addEventListener("change", () => {
 document.getElementById("today").addEventListener("click", setToday);
 els.morning.addEventListener("click", () => setCheckout(false));
 els.checkout.addEventListener("click", () => setCheckout(true));
-document.getElementById("send").addEventListener("click", () => sendMail(false));
-document.getElementById("send-outlook").addEventListener("click", () => sendMail(true));
+document.getElementById("send").addEventListener("click", sendMail);
 document.getElementById("manage").addEventListener("click", () => {
   els.historyPanel.classList.remove("hidden");
   renderHistory();
