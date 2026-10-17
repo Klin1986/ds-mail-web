@@ -106,10 +106,25 @@ textarea { resize: vertical; min-height: 140px; }
   align-items: center;
 }
 
-.date-row #date {
-  width: 100%;
+.date-face {
+  position: relative;
   min-width: 0;
+}
+
+.date-face #date {
+  width: 100%;
   height: 44px;
+  pointer-events: none;
+}
+
+#date-picker {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: 0;
+  opacity: 0;
 }
 
 #today {

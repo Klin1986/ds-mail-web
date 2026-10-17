@@ -17,6 +17,7 @@ const els = {
   sender: document.getElementById("sender"),
   dest: document.getElementById("destination"),
   date: document.getElementById("date"),
+  datePicker: document.getElementById("date-picker"),
   body: document.getElementById("body"),
   subject: document.getElementById("subject"),
   morning: document.getElementById("morning"),
@@ -137,47 +138,11 @@ function setCheckout(on) {
 
 function setToday() {
   const now = new Date();
-  els.date.value = formatDate(now);
+  const today = formatDate(now);
+  els.date.value = today;
+  els.datePicker.value = today;
   persist();
   els.subject.textContent = subject();
-}
-
-function openDatePicker() {
-  const picker = document.createElement("input");
-  picker.type = "date";
-  picker.value = els.date.value;
-  picker.setAttribute("aria-label", "Choose date");
-  picker.style.position = "fixed";
-  picker.style.opacity = "0";
-  picker.style.pointerEvents = "none";
-  picker.style.inset = "0";
-  document.body.appendChild(picker);
-
-  const closePicker = () => {
-    picker.remove();
-  };
-  picker.addEventListener("change", () => {
-    if (picker.value) {
-      els.date.value = formatDate(parseISODate(picker.value));
-      persist();
-      els.subject.textContent = subject();
-    }
-    closePicker();
-  });
-  picker.addEventListener("blur", () => {
-    window.setTimeout(closePicker, 300);
-  });
-
-  if (typeof picker.showPicker === "function") {
-    try {
-      picker.showPicker();
-      return;
-    } catch (_) {
-      // Some browsers only open the picker from a direct tap.
-    }
-  }
-  picker.style.pointerEvents = "auto";
-  picker.focus();
 }
 
 function encodeQuery(value) {
@@ -291,7 +256,13 @@ function restore() {
 });
 
 els.body.addEventListener("input", persist);
-els.date.addEventListener("click", openDatePicker);
+els.datePicker.addEventListener("change", () => {
+  if (!els.datePicker.value) return;
+  els.date.value = formatDate(parseISODate(els.datePicker.value));
+  persist();
+  els.subject.textContent = subject();
+  els.datePicker.blur();
+});
 document.getElementById("today").addEventListener("click", setToday);
 els.morning.addEventListener("click", () => setCheckout(false));
 els.checkout.addEventListener("click", () => setCheckout(true));
