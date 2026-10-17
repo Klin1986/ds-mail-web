@@ -33,9 +33,12 @@
     </div>
 
     <label for="date">Date</label>
-    <div class="field-row">
+    <div class="date-row">
       <input id="date" type="text" readonly>
-      <input id="date-picker" type="date" aria-label="Pick date">
+      <label class="date-picker-button">
+        <span class="visually-hidden">日付を選ぶ</span>
+        <input id="date-picker" type="date" aria-label="Pick date">
+      </label>
       <button id="today" type="button" class="secondary">Today</button>
     </div>
 
