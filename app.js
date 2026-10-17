@@ -51,8 +51,10 @@ function promote(value, items) {
 }
 
 function formatDate(date) {
-  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  return `${months[date.getMonth()]}-${date.getDate()}`;
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
 }
 
 function parseISODate(value) {
@@ -137,7 +139,7 @@ function setCheckout(on) {
 function setToday() {
   const now = new Date();
   els.date.value = formatDate(now);
-  els.datePicker.value = now.toISOString().slice(0, 10);
+  els.datePicker.value = formatDate(now);
   persist();
   els.subject.textContent = subject();
 }
@@ -260,6 +262,13 @@ els.datePicker.addEventListener("change", () => {
   els.subject.textContent = subject();
 });
 
+els.date.addEventListener("click", () => {
+  if (typeof els.datePicker.showPicker === "function") {
+    els.datePicker.showPicker();
+  } else {
+    els.datePicker.focus();
+  }
+});
 document.getElementById("today").addEventListener("click", setToday);
 els.morning.addEventListener("click", () => setCheckout(false));
 els.checkout.addEventListener("click", () => setCheckout(true));

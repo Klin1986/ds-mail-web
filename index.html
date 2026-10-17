@@ -8,7 +8,7 @@
   <meta name="theme-color" content="#f2f2f7">
   <title>DS Mail</title>
   <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="styles.css?v=4">
+  <link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
   <header class="topbar">
@@ -35,12 +35,7 @@
     <label for="date">Date</label>
     <div class="date-row">
       <input id="date" type="text" readonly>
-      <label class="date-picker-button" aria-label="Choose date">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path fill="currentColor" d="M7 2h2v2h6V2h2v2h3v18H4V4h3V2zm11 8H6v10h12V10z"/>
-        </svg>
-        <input id="date-picker" type="date" aria-label="Choose date">
-      </label>
+      <input id="date-picker" type="date" aria-label="Choose date" tabindex="-1">
       <button id="today" type="button" class="secondary">Today</button>
     </div>
 
@@ -107,6 +102,6 @@
     </div>
   </dialog>
 
-  <script src="app.js?v=4"></script>
+  <script src="app.js?v=5"></script>
 </body>
 </html>
