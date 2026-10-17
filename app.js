@@ -83,10 +83,10 @@ function isValidEmail(value) {
 }
 
 function validationMessage() {
-  if (!els.to.value.trim()) return "Email Address を入力してください。";
-  if (!isValidEmail(els.to.value)) return "Email Address の形式を確認してください。";
-  if (!els.sender.value.trim()) return "Sender を入力してください。";
-  if (!els.dest.value.trim()) return "Destination を入力してください。";
+  if (!els.to.value.trim()) return "Enter an email address.";
+  if (!isValidEmail(els.to.value)) return "Check the email address.";
+  if (!els.sender.value.trim()) return "Enter a sender.";
+  if (!els.dest.value.trim()) return "Enter a destination.";
   return null;
 }
 
@@ -187,14 +187,14 @@ function renderHistory() {
     if (!items.length) {
       const empty = document.createElement("p");
       empty.className = "empty";
-      empty.textContent = "履歴はありません。";
+      empty.textContent = "No history.";
       els.historyLists.appendChild(empty);
       return;
     }
     const clear = document.createElement("button");
     clear.type = "button";
     clear.className = "secondary";
-    clear.textContent = "全削除";
+    clear.textContent = "Clear All";
     clear.addEventListener("click", () => {
       saveList(key, []);
       refreshHistoryMenus();
@@ -208,7 +208,7 @@ function renderHistory() {
       label.textContent = item;
       const remove = document.createElement("button");
       remove.type = "button";
-      remove.textContent = "削除";
+      remove.textContent = "Delete";
       remove.addEventListener("click", () => {
         const next = items.filter((_, itemIndex) => itemIndex !== index);
         saveList(key, next);

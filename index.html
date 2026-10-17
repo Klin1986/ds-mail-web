@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -8,15 +8,15 @@
   <meta name="theme-color" content="#f2f2f7">
   <title>DS Mail</title>
   <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=4">
 </head>
 <body>
   <header class="topbar">
     <div class="title-row">
       <h1>DS Mail</h1>
-      <button id="install-help" type="button" class="text-button">追加方法</button>
+      <button id="install-help" type="button" class="text-button">How to Add</button>
     </div>
-    <p class="subtitle">入力内容はこの端末のブラウザに保存されます</p>
+    <p class="subtitle">Saved in this browser</p>
   </header>
 
   <main class="sheet">
@@ -35,9 +35,11 @@
     <label for="date">Date</label>
     <div class="date-row">
       <input id="date" type="text" readonly>
-      <label class="date-picker-button">
-        <span class="visually-hidden">日付を選ぶ</span>
-        <input id="date-picker" type="date" aria-label="Pick date">
+      <label class="date-picker-button" aria-label="Choose date">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M7 2h2v2h6V2h2v2h3v18H4V4h3V2zm11 8H6v10h12V10z"/>
+        </svg>
+        <input id="date-picker" type="date" aria-label="Choose date">
       </label>
       <button id="today" type="button" class="secondary">Today</button>
     </div>
@@ -60,7 +62,7 @@
     </div>
 
     <button id="send" type="button" class="primary">Send E-mail</button>
-    <button id="send-outlook" type="button" class="secondary">Outlook で開く</button>
+    <button id="send-outlook" type="button" class="secondary">Open in Outlook</button>
     <button id="manage" type="button" class="secondary">Manage History</button>
     <p id="status" class="status" role="status"></p>
   </main>
@@ -68,43 +70,43 @@
   <section id="history-panel" class="history hidden">
     <div class="history-head">
       <h2>History</h2>
-      <button id="close-history" type="button" class="secondary">閉じる</button>
+      <button id="close-history" type="button" class="secondary">Close</button>
     </div>
     <div id="history-lists"></div>
   </section>
 
   <dialog id="install-guide">
-    <h2>ホーム画面とお気に入りに追加</h2>
-    <p class="guide-lead">ページから自動では追加できません。下のボタンを、この画面の案内どおりに押してください。</p>
+    <h2>Add to Home Screen</h2>
+    <p class="guide-lead">This page cannot add itself. Follow these steps in Safari.</p>
     <ol class="steps">
       <li>
-        <strong>Safari で開く</strong>
-        <span>LINE やメールの中で開いているときは、共有ボタンから「Safari で開く」を選びます。</span>
+        <strong>Open in Safari</strong>
+        <span>If this page is inside Mail or another app, tap Share and choose Open in Safari.</span>
       </li>
       <li>
-        <strong>画面下の共有ボタンを押す</strong>
+        <strong>Tap the Share button</strong>
         <span class="share-mark" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="22" height="22">
             <path fill="currentColor" d="M12 3.2 6.7 8.5l1.4 1.4L11 6.9V15h2V6.9l2.9 3 1.4-1.4L12 3.2zM5 13v6h14v-6h2v8H3v-8h2z"/>
           </svg>
         </span>
-        <span>四角から上向きの矢印が出ているボタンです。</span>
+        <span>It is the square with an upward arrow, at the bottom of the screen.</span>
       </li>
       <li>
-        <strong>「ホーム画面に追加」を押す</strong>
-        <span>一覧を下まで見て、見つからなければ「その他」や編集から探します。右上の「追加」で完了です。</span>
+        <strong>Tap Add to Home Screen</strong>
+        <span>Scroll the list if you do not see it, then tap Add.</span>
       </li>
       <li>
-        <strong>お気に入りにする</strong>
-        <span>同じ共有ボタンから「ブックマークを追加」を押し、保存場所を「お気に入り」にして保存します。</span>
+        <strong>Add a favorite</strong>
+        <span>Tap Share again, choose Add Bookmark, and save it in Favorites.</span>
       </li>
     </ol>
     <div class="guide-actions">
-      <button id="install-later" type="button" class="secondary">あとで</button>
-      <button id="install-done" type="button" class="primary">追加した</button>
+      <button id="install-later" type="button" class="secondary">Later</button>
+      <button id="install-done" type="button" class="primary">Done</button>
     </div>
   </dialog>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=4"></script>
 </body>
 </html>

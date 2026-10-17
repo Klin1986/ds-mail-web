@@ -1,7 +1,7 @@
 # DS Mail (Web)
 
-iPhone アプリと同じ Daily Status メール作成画面です。入力と履歴は、開いた端末のブラウザに保存されます。
+Web version of the Daily Status mail composer. Entries and history stay in the browser on that device.
 
-公開 URL: https://klin1986.github.io/ds-mail-web/
+https://klin1986.github.io/ds-mail-web/
 
-Safari で開いて使います。共有 → ホーム画面に追加 すると、次回からアプリのように開けます。
+Open it in Safari. Use Share, then Add to Home Screen, to keep it on the iPhone home screen.
