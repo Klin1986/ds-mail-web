@@ -33,6 +33,21 @@ body {
   padding: calc(16px + env(safe-area-inset-top)) 20px 8px;
 }
 
+.title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.text-button {
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  font-size: 15px;
+  padding: 8px 0;
+}
+
 h1 {
   margin: 0;
   font-size: 28px;
@@ -173,3 +188,55 @@ button.secondary {
 }
 
 .empty { color: var(--muted); font-size: 14px; }
+
+#install-guide {
+  width: min(420px, calc(100vw - 32px));
+  border: 0;
+  border-radius: 16px;
+  padding: 20px;
+  color: var(--text);
+  background: var(--card);
+}
+
+#install-guide::backdrop {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+#install-guide h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.guide-lead, .steps span {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.steps {
+  margin: 16px 0;
+  padding-left: 1.2em;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.steps strong { display: block; }
+
+.share-mark {
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+  margin: 6px 0;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--accent);
+}
+
+.guide-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}

@@ -292,3 +292,42 @@ document.getElementById("close-history").addEventListener("click", () => {
 });
 
 restore();
+
+const installGuide = document.getElementById("install-guide");
+const installHintDoneKey = "ds_install_hint_done";
+
+function isStandaloneApp() {
+  return window.navigator.standalone === true
+    || window.matchMedia("(display-mode: standalone)").matches;
+}
+
+function isIPhoneOrIPad() {
+  return /iPhone|iPad|iPod/.test(navigator.userAgent)
+    || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+}
+
+function showInstallGuide() {
+  if (typeof installGuide.showModal === "function" && !installGuide.open) {
+    installGuide.showModal();
+  }
+}
+
+document.getElementById("install-help").addEventListener("click", showInstallGuide);
+document.getElementById("install-later").addEventListener("click", () => {
+  sessionStorage.setItem("ds_install_hint_later", "1");
+  installGuide.close();
+});
+document.getElementById("install-done").addEventListener("click", () => {
+  localStorage.setItem(installHintDoneKey, "1");
+  installGuide.close();
+});
+
+if (isStandaloneApp()) {
+  document.getElementById("install-help").hidden = true;
+} else if (
+  isIPhoneOrIPad()
+  && localStorage.getItem(installHintDoneKey) !== "1"
+  && sessionStorage.getItem("ds_install_hint_later") !== "1"
+) {
+  showInstallGuide();
+}
