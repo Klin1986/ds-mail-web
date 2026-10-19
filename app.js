@@ -256,6 +256,19 @@ function restore() {
 });
 
 els.body.addEventListener("input", persist);
+// Chromium does not always open the native calendar when the transparent
+// date input is clicked outside its built-in calendar indicator.
+els.datePicker.addEventListener("click", () => {
+  if (typeof els.datePicker.showPicker !== "function") return;
+  try {
+    els.datePicker.showPicker();
+  } catch (error) {
+    // Keep the browser's native date input behavior as a fallback.
+    if (error.name !== "NotAllowedError" && error.name !== "NotSupportedError") {
+      console.warn("Unable to open date picker:", error);
+    }
+  }
+});
 els.datePicker.addEventListener("change", () => {
   if (!els.datePicker.value) return;
   els.date.value = formatDate(parseISODate(els.datePicker.value));
